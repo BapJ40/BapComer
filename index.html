@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecomercio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@28,400,0,0" />
+    <link rel="icon" href="format_bold_24dp_5985E1_FILL0_wght400_GRAD0_opsz24.png">
+</head>
+<body>
+    <header id="encabezado">
+         <!-- Y este el nombre de la marca tambien de la tienda -->
+          <h1 id="tituloMarca">Baps</h1> 
+          
+        <!-- OPCIONES -->
+        <!-- Buscador de producto -->
+        <span id="buscar" class="material-symbols-outlined">
+            search
+        </span>      
+        <!-- Carrito de compras -->  
+        <span id="carrito" class="material-symbols-outlined">
+                shopping_bag
+        </span>
+    </header>
+    <!-- Main -->
+    <main>
+        <!-- Vista Buscador -->
+        <div class="oculto vista-busqueda">
+            <div class="contenedorBtn">
+                <span id="btnCerrarBusqueda" class="material-symbols-outlined">close</span>
+            </div>
+            <div id="buscador">
+                <input type="text" name="busqueda" id="campoBusqueda" placeholder="¿Que estas buscando?"> 
+            </div>
+            <div id="busqueda-cartas">
+                <!-- Cartas de busqueda -->
+            </div>
+        </div>
+        <!-- Imagen de la pagina y tambien de imagenes de promo o ofertas nuevas o publicaciones nuevas -->
+        <!-- Aprender hacer un carrusel -->
+        <div id="imgTexto">
+            <img src="Baps.jpg" alt="Marca">
+        </div>
+        <!-- Opciones de selecciones, clubes -->
+        <span id="textoOpciones">¿Que estas buscando?</span>
+        <div id="OpcionesCompra">
+            <nav class="Opciones">
+                <a href="#selecciones">
+                <div class="IconoBorder">
+                    <span id="iconoCamisa" class="material-symbols-outlined icono">
+                        apparel
+                    </span>
+                    <p class="textoIcono">Selecciones</p>
+                </div>
+                </a>
+                <a href="#clubes">
+                <div class="IconoBorder">
+                    <span id="iconoCamisa" class="material-symbols-outlined icono">
+                        apparel
+                    </span>
+                    <p class="textoIcono">Clubes</p>
+                </div>
+                </a>
+                <a href="#ofertas">
+                <div class="IconoBorder">
+                    <span id="iconoCamisa" class="material-symbols-outlined icono">
+                        apparel
+                    </span>
+                    <p class="textoIcono">Ofertas</p>
+                </div>
+                </a>
+            </nav>
+        </div>
+        <!-- Catalogo -->
+        <div id="catalogo">
+            <div id="selecciones">
+                <h2 class="tituloCatalogo">Selecciones</h2>
+                <div id="GridSelecciones" class="catalogoGrid">
+                    <!-- Cartas -->
+                </div>
+            </div>
+            <div id="clubes">
+                <h2 class="tituloCatalogo">Clubes</h2>
+                <div id="GridClubes" class="catalogoGrid">
+                    <!-- Cartas -->
+                </div>
+            </div>
+            <div id="ofertas">
+                <h2 class="tituloCatalogo">Ofertas</h2>
+                <div id="GridOferta" class="catalogoGrid">
+                    <!-- Cartas -->
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL VISTA PREVIA -->
+        <div id="ModalVista">
+            <div class="ModalContenido">
+                <div class="botones">
+                    <button id="btnAnterior" class="material-symbols-outlined">chevron_left</button>
+                </div>
+                <div class="Carrusel">
+                    <div id="img_modal_principal_carrusel" class="carrusel-slide">
+                        <img id="img_modal_principal" src="" alt="img_principal">
+                    </div>
+                    <div id="img_modal_secundaria_carrusel" class="carrusel-slide">
+                        <img id="img_modal_secudaria" src="" alt="img_secundaria">
+                    </div>
+                </div>
+                <div class="botones">
+                    <button id="btnSiguiente" class="material-symbols-outlined">chevron_right</button>
+                </div>
+                <div class="contenidoCamisa">
+                    <p id="nombre_modal"></p>
+                    <p id="marca_modal"></p>
+                    <div id="precios" class="valor">
+                        <p id="precio_modal" class="oferta"></p>
+                        <p id="precio_modal_oferta"></p>
+                    </div>
+                    <p id="talla_modal">Talla:</p>
+                    <div id="tallas">
+                        <div class="xs oculto"><p>XS</p></div>
+                        <div class="s oculto"><p>S</p></div>
+                        <div class="m oculto"><p>M</p></div>
+                        <div class="l oculto"><p>L</p></div>
+                        <div class="xl oculto"><p>XL</p></div>
+                    </div>
+                    <div id="cantidad">
+                        <p id="cantidadTitulo">Disponibles:</p> <p id="cantidadModal"></p>
+                    </div>
+                    <div class="deshabilitado" id="subcontenido_camisa" >
+                        <div id="cantidades">
+                            <button id="btnMenos">-</button>
+                            <input type="number" name="cant" id="cantModal" value="1">
+                            <button id="btnMas">+</button>
+                        </div>
+                        <button id="botonModal">Añadir al carrito</button>
+                    </div>
+                    
+                </div>
+                
+                <div id="btn">
+                    <span id="btnCerrarModal" class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boton para subir -->
+        <div id="flechaPaArriba">
+            <span class="material-symbols-outlined">
+                stat_1
+                </span>
+        </div>
+
+    </main>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="datos.js" ></script>
+</body>
+</html>

@@ -1,0 +1,740 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --AzulRey: #0454A2;
+    --AzulReyOscuro: #074A85;
+    --AzulCelesteClaro: #DDE9F3;
+    --AzulCelestico: #4D82BE;
+    --Amarillo: #FDD567;
+    --AmarilloClaro: #FCDD5A;
+
+    --txtTitulo: "Rubik Mono One";
+    --txtSubTitulos: "Kanit";
+    --txtNumerosParraffos: "Martian Mono";
+}
+
+body{
+    background-color: var(--AzulCelesteClaro);
+    margin: 0;
+    padding: 0;
+}
+
+body.scroll-lock {
+    overflow: hidden;
+}
+
+.deshabilitado {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#encabezado{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--AzulRey);
+    width: 100%;
+    height: auto;
+}
+
+#iconMenu{
+    color: white;
+    font-size: 30px;
+    margin-left: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#tituloMarca{
+    font-family: "Rubik Mono One";
+    font-size: 3.2rem;
+    font-weight: 400;
+    margin: auto 505px auto auto;
+    color: white;
+    user-select: none;
+}
+
+#buscar{
+    margin: auto 0px auto 42px;
+    color: white;
+    font-size: 30px;
+    user-select: none;
+    cursor: pointer;
+}
+
+#carrito{
+    margin: auto 30px auto ;
+    color: white;
+    font-size: 30px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.contenedorBtn{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+#btnCerrarBusqueda{
+    color: white;
+    font-size: 30px;
+    margin: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.vista-busqueda{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    background-color: var(--AzulReyOscuro);
+    background: linear-gradient(#074A85 50%, #0454A2 100%);
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+#buscador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#campoBusqueda{
+    margin: 0;
+    padding: 0;
+    width: 95%;
+    height: 60px;
+    border-radius: 16px;
+    border: none;
+    font-family: var(--txtNumerosParraffos);
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+#busqueda-cartas{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  justify-content: center;
+  align-items: center;
+  grid-row-gap: 0px;
+  grid-column-gap: 0px;
+}
+
+.cartaBusqueda{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 16px;
+  margin: 10px;
+  background-color: var(--AzulCelestico);
+}
+
+.contendorImg{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin: 10px;
+  width: 300px;
+  height: 350px;
+  cursor: pointer;
+}
+
+.contendorImg img{
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+}
+
+.contendorImg p{
+  position: absolute;
+  top: 0px;
+  right: 12px;
+  display: block;
+  background-color: var(--AzulReyOscuro);
+  border-radius: 16px;
+  padding: 5px;
+  color: white;
+  user-select: none;
+}
+
+.nombreCamisaBusqueda{
+    font-family: var(--txtSubTitulos);
+    font-size: 2.5rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+
+.precioCamisaBusqueda{
+    font-family: var(--txtNumerosParraffos);
+    font-size: 1.8rem;
+    margin: 10px 0 10px 0;
+    padding: 0;
+    color: rgba(144, 238, 144, 0.95);
+}
+
+.cartaBusqueda button{
+    background-color: var(--Amarillo);
+    border: none;
+    border-radius: 16px;
+    width: 330px;
+    height: 40px;
+    font-family: var(--txtNumerosParraffos);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--AzulRey);
+    cursor: pointer;
+    padding: 0;
+}
+
+.cartaBusqueda button:hover{
+    background-color: #FF9900;
+    color: white;
+    transition: 0.5s;
+}
+
+#imgTexto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+#textoOpciones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Kanit";
+    font-size: 2.9rem;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    user-select: none;
+    color: var(--AzulRey);
+}
+
+.Opciones{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    font-family: "Kanit";
+    font-weight: 600;
+    font-size: 1.5rem;
+    user-select: none;
+    cursor: pointer;
+    margin: 0px 20px;
+    transition: 0.5s;
+    color: var(--AzulRey);
+}
+
+a:hover{
+    color: var(--AzulCelestico);
+    transition: 0.5s;
+
+}
+
+.IconoBorder{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: var(--AzulRey);
+    text-align: center;
+    border: 3px solid var(--AzulCelestico);
+    cursor: pointer;
+    margin: auto 25px;
+    user-select: none;
+}
+
+.icono{
+    margin: 12px auto;
+    color: var(--AzulCelesteClaro);
+}
+
+#iconoCamisa{
+    font-size: 50px;
+}
+
+.textoIcono{
+    text-align: center;
+    font-family: "Kanit";
+    font-weight: 600;
+    margin: 0px -25px;
+    user-select: none;
+    font-size: 1.5rem;
+}
+
+#catalogo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.tituloCatalogo{
+    font-family: "Kanit";
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 15px;
+    color: var(--AzulRey);
+    text-align: start;
+    margin-bottom: 0px;
+}
+
+.catalogoGrid{
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 40px 40px;
+}
+
+.carta_presentacion{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 400px;
+    background-color: var(--AzulCelestico);
+    border-radius: 16px;
+    transition: 0.5s;
+}
+
+.contendor_img{
+    width: 250px;
+    height: 250px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.contendor_img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 16px;
+    background-color: white;
+}
+
+.contendor_img p{
+    position: absolute; 
+    top: 10px;
+    left: 235px;
+    display: block;
+    user-select: none;
+    opacity: 0;
+    transition: 0.5s;
+    background-color: var(--AzulRey);
+    color: white;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.contendor_img:hover p{
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.nombre_presentacion{
+    font-family: "Kanit";
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--AzulCelesteClaro);
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.marca_presentacion{
+    font-family: "Kanit";
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--AzulCelesteClaro);
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;    
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.precio_presentacion{
+    font-family: var(--txtNumerosParraffos);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgba(144, 238, 144, 0.95);
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#flechaPaArriba{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 40px;
+    color: white;
+    user-select: none;
+    background-color: var(--AzulRey);
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#flechaPaArriba.aparecer {
+    opacity: 1;
+    cursor: pointer;
+}
+
+#ModalVista{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.ModalContenido{
+    position: relative;
+    background-color: var(--AzulCelestico);
+    margin: 0% auto;
+    margin-top: 125px;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 900px;
+    height: 450px;
+    border-radius: 24px;
+    display: flex;
+}
+
+#btnAnterior{
+    position: absolute;
+    background-color: var(--AzulRey);
+    color: white;
+    padding: 2px;
+    border: none;
+    top: 225px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#btnSiguiente{
+    position: absolute;
+    background-color: var(--AzulRey);
+    color: white;
+    padding: 2px;
+    border: none;
+    top: 225px;
+    right: 470px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.carrusel-slide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    width: 450px;
+    margin: auto 15px auto 0px;
+}
+
+.Carrusel img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 16px;
+    margin-left: 0px;
+}
+
+.contenidoCamisa{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 400px;
+}
+
+#subcontenido_camisa{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1; /* Permitir que ocupe el espacio disponible */
+}
+
+#cantidades{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#btnMenos{
+    background-color: var(--AzulRey);
+    color: white;
+    padding: 10px;
+    padding-left: 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px 0px 0px 5px;
+    transition: 0.5s;
+    font-size: 26px;
+}
+
+#btnMenos:hover{
+    background-color: white;
+    color: var(--AzulRey);
+    transition: 0.5s;
+}
+
+#cantModal{
+    background-color: var(--AzulCelesteClaro);
+    color: var(--AzulReyOscuro);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 26px;
+    width: 40px;
+}
+
+#btnMas{
+    background-color: var(--AzulRey);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0px 5px 5px 0px;
+    transition: 0.5s;
+    font-size: 26px;
+    margin-right: 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para Firefox */
+input[type=number] {
+    -moz-appearance: textfield; /* Cambia a apariencia de texto */
+}
+
+/* Estilo del input */
+input[type=number] {
+    border: 1px solid #ccc; /* Borde normal */
+    outline: none; /* Elimina el efecto de enfoque */
+}
+
+/* Sin efecto de enfoque */
+input[type=number]:focus {
+    border: 1px solid #ccc; /* Mantiene el mismo borde */
+    background: transparent; /* Fondo transparente o del mismo color */
+}
+
+#btnMas:hover{
+    background-color: white;
+    color: var(--AzulRey);
+    transition: 0.5s;
+}
+
+#botonModal{
+    background-color: var(--AzulRey);
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 16px;
+    transition: 0.5s;
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+#botonModal:hover{
+    background-color: white;
+    color: var(--AzulRey);
+    transition: 0.5s;
+}
+
+#nombre_modal{
+    font-family: "Kanit";
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    text-align: start;
+    margin: 0;
+}
+
+#marca_modal{
+    font-family: var(--txtSubTitulos);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: white;
+    text-align: start;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+#precios{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: row;
+    margin: 10px 0px 0px 0px;
+}
+
+.valor{
+    font-family: var(--txtNumerosParraffos);
+    font-size: 2.3rem;
+    font-weight: 400;
+    color: rgba(144, 238, 144, 0.95);
+}
+
+.oferta{
+    text-decoration: line-through;
+    /* color: #bebdbdf1; */
+    color: rgba(144, 238, 144, 0.95);
+}
+
+#precio_modal{
+    margin-top: 12px;
+    margin-right: 10px;
+    font-size: 1.5rem;
+    opacity: 70%; 
+}
+
+#precio_modal_oferta{
+    margin: 0; 
+}
+
+#talla_modal{
+    font-family: var(--txtSubTitulos);
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: white;
+    text-align: start;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+#tallas{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.xs, .s, .m, .l, .xl{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: var(--AzulRey);
+    color: white;
+    font-family: var(--txtTitulo);
+    font-size: 1rem;
+    font-weight: 100;
+    border-radius: 5px;
+    transition: 0.5s;
+    margin-bottom: 0;
+}
+
+.xs:hover, .s:hover, .m:hover, .l:hover, .xl:hover{
+    background-color: white;
+    color: var(--AzulRey);
+    transition: 0.5s;
+}
+
+#cantidad{
+    display: flex;
+    color: white;
+    font-size: 1.8rem;
+    font-family: var(--txtSubTitulos);
+}
+
+#cantidadTitulo{
+    margin: 0;
+    padding: 0;
+}
+
+#cantidadModal{
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+}
+
+#btnCerrarModal{
+    color: var(--AmarilloClaro);
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.oculto{
+    display: none;
+    margin: 0;
+    padding: 0;
+}
