@@ -361,7 +361,7 @@ a:hover{
 
 .contendor_img p{
     position: absolute; 
-    top: 10px;
+    top: 30px;
     left: 235px;
     display: block;
     user-select: none;
@@ -468,6 +468,17 @@ a:hover{
     margin-left: 10px;
     cursor: pointer;
     border-radius: 5px;
+    transition: 0.5s;
+}
+
+#btnAnterior:hover{
+    background-color: var(--AzulCelestico);
+    transition: 0.5s;
+}
+
+#btnAnterior:active{
+    background-color: var(--AzulRey);
+    transition: 0.2s;
 }
 
 #btnSiguiente{
@@ -481,6 +492,16 @@ a:hover{
     margin-right: 10px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+#btnSiguiente:hover{
+    background-color: var(--AzulCelestico);
+    transition: 0.5s;
+}
+
+#btnSiguiente:active{
+    background-color: var(--AzulRey);
+    transition: 0.2s;
 }
 
 .carrusel-slide{
@@ -651,19 +672,11 @@ input[type=number]:focus {
 
 .oferta{
     text-decoration: line-through;
-    /* color: #bebdbdf1; */
     color: rgba(144, 238, 144, 0.95);
-}
-
-#precio_modal{
     margin-top: 12px;
     margin-right: 10px;
     font-size: 1.5rem;
     opacity: 70%; 
-}
-
-#precio_modal_oferta{
-    margin: 0; 
 }
 
 #talla_modal{
@@ -708,6 +721,11 @@ input[type=number]:focus {
     transition: 0.5s;
 }
 
+.talla_activa{
+    background-color: white;
+    color: var(--AzulRey);
+}
+
 #cantidad{
     display: flex;
     color: white;
@@ -737,4 +755,73 @@ input[type=number]:focus {
     display: none;
     margin: 0;
     padding: 0;
+}
+
+#alerta{
+    margin: 0;
+    padding: 0;
+}
+
+#alerta_contenido{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 16px;
+    width: 400px;
+    height: 150px;
+    z-index: 1;
+    top: 80%;
+    left: 37.5%;
+    animation: alerta-animacion 0.5s forwards;
+    transform: translateX(-50%);
+}
+
+#btn_cerrar_alerta{
+    position: relative;
+    bottom: 15px;
+    left: 45%;
+    transition: 0.5s;
+    user-select: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    font-size: 1.7rem;
+}
+
+#btn_cerrar_alerta:hover{
+    color: white;
+    transition: 0.5s;
+}
+
+#texto_alerta{
+    margin: 0;
+    padding: 0; 
+    font-family: var(--txtSubTitulos);
+    text-wrap-mode: nowrap;
+}
+
+.barra_tiempo{
+    position: relative;
+    background-color: #40aa40;
+    width: 100%;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0px 0px 16px 16px;
+    top: 22px;
+}
+
+body.mostrar-alerta {
+    overflow-y: hidden;
+  }
+
+@keyframes alerta-animacion {
+    0%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
 }

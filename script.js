@@ -55,6 +55,48 @@ campoBusqueda.addEventListener('input', () => {
     
 })
 
+const botonModal = document.querySelector("#botonModal")
+const cantModal = document.querySelector("#cantModal")
+const cantidad_valor = document.querySelector("#cantidadModal")
+botonModal.addEventListener("click", () => {
+    const cantidad_compra = parseInt(cantModal.value)
+    const cantidad = parseInt(cantidad_valor.textContent)
+    if (cantidad_compra > cantidad){
+        const alerta_compra = document.querySelector("#alerta")
+        const alerta_contenido = document.querySelector("#alerta_contenido")
+        const alerta_compra_texto = document.querySelector("#texto_alerta")
+        const barra_tiempo = document.querySelector(".barra_tiempo")
+        alerta_contenido.style.backgroundColor = "#FFC5C5"
+        alerta_contenido.style.color = "#FF3737"
+        alerta_compra.classList.remove("oculto")
+        alerta_compra_texto.style.fontSize = "1.9rem"
+        alerta_compra_texto.textContent = "No hay suficientes productos"
+        barra_tiempo.style.backgroundColor = "#FF3737"
+        barra_tiempo.style.top = "26px"
+        document.body.classList.add('mostrar-alerta');
+    } else {
+        const alerta_compra = document.querySelector("#alerta")
+        const alerta_contenido = document.querySelector("#alerta_contenido")
+        const alerta_compra_texto = document.querySelector("#texto_alerta")
+        const barra_tiempo = document.querySelector(".barra_tiempo")
+        alerta_contenido.style.backgroundColor = "#90ee90"
+        alerta_contenido.style.color = "#40aa40"
+        alerta_compra.classList.remove("oculto")
+        alerta_compra_texto.style.fontSize = "2.2rem"
+        alerta_compra_texto.textContent = "Se ha agregado al carrito"
+        barra_tiempo.style.backgroundColor = "#40aa40"
+        barra_tiempo.style.top = "22px"
+        document.body.classList.add('mostrar-alerta');
+    }
+})
+
+const btn_cerrar_alerta = document.querySelector("#btn_cerrar_alerta")
+btn_cerrar_alerta.addEventListener("click", () => {
+    const alerta = document.querySelector("#alerta")
+    alerta.classList.add("oculto")
+    document.body.classList.remove('mostrar-alerta');
+})
+
 document.addEventListener("DOMContentLoaded", function() {
     const btnMenos = document.querySelector("#btnMenos");
     const btnMas = document.querySelector("#btnMas");
@@ -160,9 +202,11 @@ closet.forEach(camisas => {
             const precio_modal = document.querySelector("#precio_modal")
             precio_modal.textContent = ("$" + camisas.valor)
             precio_modal_oferta.textContent = ("$" + camisas.valor_oferta)
+            precio_modal.classList.add("oferta")
+        } else {
+            const precio_modal = document.querySelector("#precio_modal")
+            precio_modal.textContent = ("$" + camisas.valor)
         }
-        // const precio_modal = document.querySelector("#precio_modal")
-        // precio_modal.textContent = ("$" + camisas.valor)
 
         const cantidad_modal = document.querySelector("#cantidadModal")
         cantidad_modal.textContent = camisas.cantidad
@@ -171,9 +215,19 @@ closet.forEach(camisas => {
             const xs = document.querySelector(".xs")
             xs.classList.remove("oculto")
             xs.addEventListener("click", () => {
+                xs.classList.add("talla_activa")
+                const s = document.querySelector(".s")
+                const m = document.querySelector(".m")
+                const l = document.querySelector(".l")
+                const xl = document.querySelector(".xl")
+                s.classList.remove("talla_activa")
+                m.classList.remove("talla_activa")
+                l.classList.remove("talla_activa")
+                xl.classList.remove("talla_activa")
                 cantidad_modal.textContent = camisas.cantidad_xs
                 const subcontenido_camisa = document.querySelector("#subcontenido_camisa")
                 subcontenido_camisa.classList.remove("deshabilitado")
+
             })
         }
 
@@ -181,6 +235,15 @@ closet.forEach(camisas => {
             const s = document.querySelector(".s")
             s.classList.remove("oculto")
             s.addEventListener("click", () => {
+                const xs = document.querySelector(".xs")
+                const m = document.querySelector(".m")
+                const l = document.querySelector(".l")
+                const xl = document.querySelector(".xl")
+                xs.classList.remove("talla_activa")
+                m.classList.remove("talla_activa")
+                l.classList.remove("talla_activa")
+                xl.classList.remove("talla_activa")
+                s.classList.add("talla_activa")
                 cantidad_modal.textContent = camisas.cantidad_s
                 const subcontenido_camisa = document.querySelector("#subcontenido_camisa")
                 subcontenido_camisa.classList.remove("deshabilitado")
@@ -191,6 +254,15 @@ closet.forEach(camisas => {
             const m = document.querySelector(".m")
             m.classList.remove("oculto")
             m.addEventListener("click", () => {
+                const xs = document.querySelector(".xs")
+                const s = document.querySelector(".s")
+                const l = document.querySelector(".l")
+                const xl = document.querySelector(".xl")
+                xs.classList.remove("talla_activa")
+                s.classList.remove("talla_activa")
+                l.classList.remove("talla_activa")
+                xl.classList.remove("talla_activa")
+                m.classList.add("talla_activa")
                 cantidad_modal.textContent = camisas.cantidad_m
                 const subcontenido_camisa = document.querySelector("#subcontenido_camisa")
                 subcontenido_camisa.classList.remove("deshabilitado")
@@ -201,6 +273,15 @@ closet.forEach(camisas => {
             const l = document.querySelector(".l")
             l.classList.remove("oculto")
             l.addEventListener("click", () => {
+                const xs = document.querySelector(".xs")
+                const s = document.querySelector(".s")
+                const m = document.querySelector(".m")
+                const xl = document.querySelector(".xl")
+                xs.classList.remove("talla_activa")
+                s.classList.remove("talla_activa")
+                m.classList.remove("talla_activa")
+                xl.classList.remove("talla_activa")
+                l.classList.add("talla_activa")
                 cantidad_modal.textContent = camisas.cantidad_l
                 const subcontenido_camisa = document.querySelector("#subcontenido_camisa")
                 subcontenido_camisa.classList.remove("deshabilitado")
@@ -211,6 +292,15 @@ closet.forEach(camisas => {
             const xl = document.querySelector(".xl")
             xl.classList.remove("oculto")
             xl.addEventListener("click", () => {
+                const xs = document.querySelector(".xs")
+                const s = document.querySelector(".s")
+                const m = document.querySelector(".m")
+                const l = document.querySelector(".l")
+                xs.classList.remove("talla_activa")
+                s.classList.remove("talla_activa")
+                m.classList.remove("talla_activa")
+                l.classList.remove("talla_activa")
+                xl.classList.add("talla_activa")
                 cantidad_modal.textContent = camisas.cantidad_xl
                 const subcontenido_camisa = document.querySelector("#subcontenido_camisa")
                 subcontenido_camisa.classList.remove("deshabilitado")
@@ -244,18 +334,28 @@ btn_cerrar_modal.addEventListener("click", () => {
     const precio_modal = document.querySelector("#precio_modal")
     precio_modal.textContent = ''
 
+    precio_modal.classList.remove("oferta")
+
+    const precio_modal_oferta = document.querySelector("#precio_modal_oferta")
+    precio_modal_oferta.textContent = ''
+
     const cantidad_modal = document.querySelector("#cantidadModal")
     cantidad_modal.textContent = ''
 
     const xs = document.querySelector(".xs")
+    xs.classList.remove("talla_activa")
     xs.classList.add("oculto")
     const s = document.querySelector(".s")
+    s.classList.remove("talla_activa")
     s.classList.add("oculto")
     const m = document.querySelector(".m")
+    m.classList.remove("talla_activa")
     m.classList.add("oculto")
     const l = document.querySelector(".l")
+    l.classList.remove("talla_activa")
     l.classList.add("oculto")
     const xl = document.querySelector(".xl")
+    xl.classList.remove("talla_activa")
     xl.classList.add("oculto")
 
     const tallas = document.querySelector("#tallas")
@@ -276,6 +376,9 @@ btn_cerrar_modal.addEventListener("click", () => {
         img_modal_secundaria_carrusel.style.display = 'none'
         img_modal_principal_carrusel.style.display = 'block'
     }
+
+    const alerta_compra = document.querySelector("#alerta")
+        alerta_compra.classList.add("oculto")
 })
 
 const slides = document.querySelectorAll('.carrusel-slide');
