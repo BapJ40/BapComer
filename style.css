@@ -804,7 +804,6 @@ input[type=number]:focus {
 
 .barra_tiempo{
     position: relative;
-    background-color: #40aa40;
     width: 100%;
     height: 25px;
     margin: 0;
@@ -813,8 +812,17 @@ input[type=number]:focus {
     top: 22px;
 }
 
-body.mostrar-alerta {
-    overflow-y: hidden;
+.barra_tiempo_animacion{
+    display: block;
+    content: "";
+    position: relative;
+    width: 100%;
+    height: 100%;
+    animation: barra-tiempo 5s linear forwards;
+    z-index: 0;
+    transform-origin: right;
+    top: -6px;
+    padding-bottom: 6px;
   }
 
 @keyframes alerta-animacion {
@@ -823,5 +831,28 @@ body.mostrar-alerta {
     }
     100%{
         transform: translateY(0%);
+    }
+}
+
+@keyframes alerta_animacion_cierre {
+    0%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(115%);
+    }
+}
+
+@keyframes barra-tiempo {
+    0% {
+      transform: scaleX(0);
+      border-radius: 0px 0px 16px 0px;
+    }
+    95%{
+        border-radius: 0px 0px 16px 0px;
+    }
+    100% {
+      transform: scaleX(1);
+      border-radius: 0px 0px 16px 16px;
     }
 }

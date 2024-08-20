@@ -61,40 +61,80 @@ const cantidad_valor = document.querySelector("#cantidadModal")
 botonModal.addEventListener("click", () => {
     const cantidad_compra = parseInt(cantModal.value)
     const cantidad = parseInt(cantidad_valor.textContent)
-    if (cantidad_compra > cantidad){
+
+    function alerta_cierra(){
+        const alerta_compra = document.querySelector("#alerta")
+        const alerta_contenido = document.querySelector("#alerta_contenido")
+        alerta_contenido.style.animation = "alerta_animacion_cierre 0.5s forwards"
+
+        setTimeout(alerta_ocultar, 500)
+        function alerta_ocultar(){
+            alerta_compra.classList.add("oculto")
+        }
+    }
+
+    if (cantidad_compra < 1) {
         const alerta_compra = document.querySelector("#alerta")
         const alerta_contenido = document.querySelector("#alerta_contenido")
         const alerta_compra_texto = document.querySelector("#texto_alerta")
         const barra_tiempo = document.querySelector(".barra_tiempo")
+        const barra_tiempo_animacion = document.querySelector(".barra_tiempo_animacion")
         alerta_contenido.style.backgroundColor = "#FFC5C5"
         alerta_contenido.style.color = "#FF3737"
+        alerta_contenido.style.animation = "alerta-animacion 0.5s forwards"
         alerta_compra.classList.remove("oculto")
         alerta_compra_texto.style.fontSize = "1.9rem"
-        alerta_compra_texto.textContent = "No hay suficientes productos"
+        alerta_compra_texto.textContent = "Error"
         barra_tiempo.style.backgroundColor = "#FF3737"
         barra_tiempo.style.top = "26px"
-        document.body.classList.add('mostrar-alerta');
-    } else {
-        const alerta_compra = document.querySelector("#alerta")
-        const alerta_contenido = document.querySelector("#alerta_contenido")
-        const alerta_compra_texto = document.querySelector("#texto_alerta")
-        const barra_tiempo = document.querySelector(".barra_tiempo")
-        alerta_contenido.style.backgroundColor = "#90ee90"
-        alerta_contenido.style.color = "#40aa40"
-        alerta_compra.classList.remove("oculto")
-        alerta_compra_texto.style.fontSize = "2.2rem"
-        alerta_compra_texto.textContent = "Se ha agregado al carrito"
-        barra_tiempo.style.backgroundColor = "#40aa40"
-        barra_tiempo.style.top = "22px"
-        document.body.classList.add('mostrar-alerta');
-    }
+        barra_tiempo_animacion.style.backgroundColor = "#FFC5C5"
+
+        setTimeout(alerta_cierra, 5000)
+    } else{
+        if (cantidad_compra > cantidad){
+            const alerta_compra = document.querySelector("#alerta")
+            const alerta_contenido = document.querySelector("#alerta_contenido")
+            const alerta_compra_texto = document.querySelector("#texto_alerta")
+            const barra_tiempo = document.querySelector(".barra_tiempo")
+            const barra_tiempo_animacion = document.querySelector(".barra_tiempo_animacion")
+            alerta_contenido.style.backgroundColor = "#FFC5C5"
+            alerta_contenido.style.color = "#FF3737"
+            alerta_contenido.style.animation = "alerta-animacion 0.5s forwards"
+            alerta_compra.classList.remove("oculto")
+            alerta_compra_texto.style.fontSize = "1.9rem"
+            alerta_compra_texto.textContent = "No hay suficientes productos"
+            barra_tiempo.style.backgroundColor = "#FF3737"
+            barra_tiempo.style.top = "26px"
+            barra_tiempo_animacion.style.backgroundColor = "#FFC5C5"
+
+            setTimeout(alerta_cierra, 5000)
+        } else {
+            const alerta_compra = document.querySelector("#alerta")
+            const alerta_contenido = document.querySelector("#alerta_contenido")
+            const alerta_compra_texto = document.querySelector("#texto_alerta")
+            const barra_tiempo = document.querySelector(".barra_tiempo")
+            const barra_tiempo_animacion = document.querySelector(".barra_tiempo_animacion")
+            alerta_contenido.style.backgroundColor = "#90ee90"
+            alerta_contenido.style.color = "#40aa40"
+            alerta_contenido.style.animation = "alerta-animacion 0.5s forwards"
+            alerta_compra.classList.remove("oculto")
+            alerta_compra_texto.style.fontSize = "2.2rem"
+            alerta_compra_texto.textContent = "Se ha agregado al carrito"
+            barra_tiempo.style.backgroundColor = "#40aa40"
+            barra_tiempo.style.top = "22px"
+            barra_tiempo_animacion.style.backgroundColor = "#90ee90"
+
+            setTimeout(alerta_cierra, 5000)
+        }
+    }  
 })
 
 const btn_cerrar_alerta = document.querySelector("#btn_cerrar_alerta")
 btn_cerrar_alerta.addEventListener("click", () => {
     const alerta = document.querySelector("#alerta")
-    alerta.classList.add("oculto")
-    document.body.classList.remove('mostrar-alerta');
+    const alerta_contenido = document.querySelector("#alerta_contenido")
+    alerta_contenido.style.animation = "alerta_animacion_cierre 0.5s forwards"
+    setTimeout( alerta.classList.add("oculto"), 500)
 })
 
 document.addEventListener("DOMContentLoaded", function() {
