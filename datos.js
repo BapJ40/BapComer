@@ -301,7 +301,7 @@ closet.push(camisa7)
 const camisa8 = new producto(
     8, // id
     "Colombia", // nombre
-    "Local", // tipo
+    "Visitante", // tipo
     "Adidas", // marca
     "https://i.ibb.co/DbtrQw7/Colombia-Visitante-Alante.webp", // img_principal
     "https://i.ibb.co/WBXQ4DC/Colombia-Visitante-AT.webp", // img_secudaria

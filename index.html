@@ -23,20 +23,27 @@
                 shopping_bag
         </span>
     </header>
-    <!-- Main -->
-    <main>
-        <!-- Vista Buscador -->
-        <div class="oculto vista-busqueda">
-            <div class="contenedorBtn">
-                <span id="btnCerrarBusqueda" class="material-symbols-outlined">close</span>
+
+    <!-- Vista Buscador -->
+    <div id="buscador" class="oculto">
+        <div id="buscador_contenido">
+            <div class="contenedor_btn">
+                <span id="btn_cerrar_busqueda" class="material-symbols-outlined">close</span>
             </div>
-            <div id="buscador">
-                <input type="text" name="busqueda" id="campoBusqueda" placeholder="¿Que estas buscando?"> 
+            <div id="campo_busqueda_container">
+                <input type="text" name="busqueda" id="campo_busqueda" placeholder="¿Que estas buscando?">
+                <span id="btn_buscar" class="material-symbols-outlined">
+                    search
+                </span> 
             </div>
-            <div id="busqueda-cartas">
-                <!-- Cartas de busqueda -->
+            <div id="resultado_busqueda">
+                <!-- Vista de resultados -->
             </div>
         </div>
+    </div>
+
+    <!-- Main -->
+    <main>
         <!-- Imagen de la pagina y tambien de imagenes de promo o ofertas nuevas o publicaciones nuevas -->
         <!-- Aprender hacer un carrusel -->
         <div id="imgTexto">

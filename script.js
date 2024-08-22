@@ -1,58 +1,60 @@
 import closet from "./datos.js"
 
-const iconoBuscar = document.querySelector("#buscar")
-const vistaBusqueda = document.querySelector(".vista-busqueda")
-const btnCerrarVista = document.querySelector("#btnCerrarBusqueda")
-
-btnCerrarVista.addEventListener("click", () => {
-    vistaBusqueda.classList.add('ocultar')
-    document.body.classList.remove('scroll-lock');    
+const icono_buscar = document.querySelector("#buscar")
+icono_buscar.addEventListener("click", () => {
+    const busqueda = document.querySelector("#buscador")
+    busqueda.classList.toggle("oculto")
 })
 
-iconoBuscar.addEventListener('click', () => {
-    vistaBusqueda.classList.remove('ocultar')
-    document.body.classList.add('scroll-lock');
-})
-
-const campoBusqueda = document.querySelector("#campoBusqueda");
-const busquedaCartas = document.querySelector("#busqueda-cartas");
-campoBusqueda.addEventListener('input', () => {
-    const valor = campoBusqueda.value
-    const filtro = closet.filter(camisa => camisa.nombreCamisa.toLowerCase().includes(valor.toLowerCase()))
-
-    busquedaCartas.innerHTML = ""
-    filtro.forEach(camisa => {
-        const cartita = document.createElement("div")
-        cartita.classList.add("cartaBusqueda")
-        const contendorImg = document.createElement("div")
-        contendorImg.classList.add("contendorImg")
-
-        const imgCamisa = document.createElement("img")
-        imgCamisa.src = camisa.imgCamisaAL
-        const nombreCamisa = document.createElement("p")
-        nombreCamisa.classList.add("nombreCamisaBusqueda")
-        nombreCamisa.textContent = camisa.nombreCamisa
-        const precioCamisa = document.createElement("p")
-        precioCamisa.classList.add("precioCamisaBusqueda")
-        precioCamisa.textContent = camisa.precioCamisa
-        const botonBolsa = document.createElement("button")
-        botonBolsa.textContent = "Agregar al carrito"
-        
-        contendorImg.append(imgCamisa)
-        cartita.append(contendorImg, nombreCamisa, precioCamisa, botonBolsa)
-        busquedaCartas.appendChild(cartita)
-
-        cartita.addEventListener('click', () => {
-            vistaBusqueda.classList.add('ocultar')
-            document.body.classList.remove('scroll-lock');    
-            const cartaCamisas = document.querySelector(`#${camisa.nombreCamisa}`)
-
-            if (cartaCamisas){
-                cartaCamisas.scrollIntoView({ behavior: "smooth" });
-            }
-        });
+function buscar_objetos(busqueda) {
+    const resultado = [];
+    closet.forEach((producto) => {
+        if (producto.nombre.toLowerCase().includes(busqueda.toLowerCase()) || producto.tipo.toLowerCase().includes(busqueda.toLowerCase())) {
+            resultado.push(producto)
+        }
     })
-    
+    return resultado;
+}
+
+function mostrar_resultados(resultados) {
+    const resultado_busqueda = document.querySelector("#resultado_busqueda")
+    resultado_busqueda.innerHTML = "";
+
+    resultados.forEach((producto) => {
+        const tarjeta_busqueda = document.createElement("div")
+        const img_busqueda_container = document.createElement("div")
+        const img_busqueda = document.createElement("img")
+        const nombre_busqueda = document.createElement("p")
+        const valor_busqueda = document.createElement("p")
+
+        tarjeta_busqueda.classList.add("tarjeta_busqueda")
+        img_busqueda_container.classList.add("img_busqueda_container")
+        img_busqueda.classList.add("img_busqueda")
+        nombre_busqueda.classList.add("nombre_busqueda")
+        valor_busqueda.classList.add("valor_busqueda")
+
+        img_busqueda.src = producto.img_principal
+        nombre_busqueda.textContent = producto.nombre + " - " + producto.tipo
+        if(producto.ofertas){
+            valor_busqueda.textContent = "$" + producto.valor_oferta
+        } else {
+            valor_busqueda.textContent = "$" + producto.valor
+        }
+
+        img_busqueda_container.append(img_busqueda)
+        tarjeta_busqueda.append(img_busqueda_container, nombre_busqueda, valor_busqueda)
+        resultado_busqueda.append(tarjeta_busqueda)
+
+        tarjeta_busqueda.addEventListener("click", () => {
+            // al hacer click que te lleve al objeto
+        })
+    })
+}
+
+const campo_busqueda = document.querySelector("#campo_busqueda")
+campo_busqueda.addEventListener("input", () => {
+    const resultados = buscar_objetos(campo_busqueda.value)
+    mostrar_resultados(resultados)
 })
 
 const botonModal = document.querySelector("#botonModal")
